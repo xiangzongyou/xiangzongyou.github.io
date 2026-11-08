@@ -7,8 +7,8 @@
 <meta name="description" content="相宗佑（Zongyou Xiang）：中佛罗里达大学数据分析硕士在读，研究如何检测 AI 生成的音乐、判断它在模仿谁、核查它是否抄袭已有作品。">
 <link rel="alternate" hreflang="en" href="../research.html">
 <link rel="preload" href="../assets/fonts/bricolage-grotesque-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/fonts.css?v=20261108e">
-<link rel="stylesheet" href="../assets/site.css?v=20261108e">
+<link rel="stylesheet" href="../assets/fonts.css?v=20261108f">
+<link rel="stylesheet" href="../assets/site.css?v=20261108f">
 </head>
 <body>
 <header class="topbar">
@@ -41,7 +41,7 @@
   <span class="label">研究一 · 音频</span>
   <h2 style="margin-top:8px">AI 音乐检测：碰到没见过的模型怎么办</h2>
   <p class="meta">个人研究 · 2026 · FakeMusicCaps 数据集 · PyTorch</p>
-  <p class="finding">见过的 AI 模型，检测器几乎都能认出来；没见过的，只能认出一半左右。</p>
+  <p class="lede study-intro">AI 音乐模型隔几个月就出一个新的，检测器只有在没见过的模型上也管用，才算真的有用。我用真实音乐和 4 个文字生成音乐模型做的片段训练检测器，再用第 5 个没参与训练的模型来测，5 个模型轮流来一遍。检测器看的是对数梅尔频谱图，一个是基于简单频谱统计的逻辑回归，一个是小型 CNN。我还试了两种办法，不让检测器依赖每个模型整体的频谱轮廓。</p>
   <div class="stats">
     <div class="stat"><b>0.975</b><span>CNN 在见过的模型上的平衡准确率</span></div>
     <div class="stat"><b>0.50</b><span>没见过的模型做的音乐里，被认出是 AI 的比例</span></div>
@@ -69,7 +69,7 @@
   <span class="label">研究二 · 乐谱</span>
   <h2 style="margin-top:8px">贝多芬分类器能被拼接仿作骗过吗</h2>
   <p class="meta">复现并延伸 Galajda &amp; Hua（IEEE MIPR 2024）· 2026 · MAESTRO 数据集 · PyTorch</p>
-  <p class="finding">这个分类器是一小节一小节看的，所以用真贝多芬的小节拼出来的“假贝多芬”能骗过它。但只要看小节之间怎么接，就会露馅。</p>
+  <p class="lede study-intro">有些 AI 模仿作曲家的方式，是从他的作品里找出真实的小节，再拼在一起。我想知道作曲家分类器能不能分辨这种仿作和真作。我先在 MAESTRO 钢琴数据集上复现了一个已发表的“是不是贝多芬”分类器（Galajda &amp; Hua, 2024），再把不同贝多芬作品的真实小节拼成仿作去测它，最后又训练了一个只看前后小节怎么衔接的检测器。</p>
   <div class="stats">
     <div class="stat"><b>0.96</b><span>复现出来的分类器的 AUC，换成更严格的数据划分也很稳</span></div>
     <div class="stat"><b>83–92%</b><span>拼接片段被认成贝多芬的比例（真贝多芬是 83%）</span></div>
@@ -121,8 +121,8 @@
 </section>
 
 </main>
-<footer><div class="wrap"><span>© 2026 相宗佑 Zongyou (Fred) Xiang</span><span><a href="https://github.com/xiangzongyou">GitHub</a> · zx1554@nyu.edu</span></div></footer>
-<script src="../assets/spectro.js?v=20261108e"></script>
-<script src="../assets/media.js?v=20261108e"></script>
+<footer><div class="wrap"><span>© 2026 相宗佑 Zongyou (Fred) Xiang</span><span><a href="https://github.com/xiangzongyou">GitHub</a> · fzyxiang@gmail.com</span></div></footer>
+<script src="../assets/spectro.js?v=20261108f"></script>
+<script src="../assets/media.js?v=20261108f"></script>
 </body>
 </html>

@@ -7,8 +7,8 @@
 <meta name="description" content="Zongyou (Fred) Xiang: M.S. Data Analytics student at UCF researching how to detect AI-generated music, identify whom it imitates, and verify whether it copies existing works.">
 <link rel="alternate" hreflang="zh-CN" href="zh/research.html">
 <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts.css?v=20261108e">
-<link rel="stylesheet" href="assets/site.css?v=20261108e">
+<link rel="stylesheet" href="assets/fonts.css?v=20261108f">
+<link rel="stylesheet" href="assets/site.css?v=20261108f">
 </head>
 <body>
 <header class="topbar">
@@ -41,7 +41,7 @@
   <span class="label">Study 1 · Audio</span>
   <h2 style="margin-top:8px">AI Music Detection on Unseen Generators</h2>
   <p class="meta">Independent pilot study · 2026 · FakeMusicCaps · PyTorch</p>
-  <p class="finding">A detector that catches AI music from generators it was trained on catches only about half of the music from a generator it has never seen.</p>
+  <p class="lede study-intro">New AI music generators come out every few months, and a detector is only useful if it still works on the ones it has never seen. I trained detectors on real music and on clips from four text-to-music models, then tested them on a fifth model left out of training, rotating through all five. The detectors read log-mel spectrograms: one is a logistic regression on simple spectral statistics, the other a small CNN. I also tried two ways to stop them from relying on each generator’s overall frequency shape.</p>
   <div class="stats">
     <div class="stat"><b>0.975</b><span>balanced accuracy of the CNN on generators seen in training</span></div>
     <div class="stat"><b>0.50</b><span>share of clips from an unseen generator that it flags as AI</span></div>
@@ -69,7 +69,7 @@
   <span class="label">Study 2 · Symbolic music</span>
   <h2 style="margin-top:8px">Testing a Beethoven Classifier on Recombined Imitations</h2>
   <p class="meta">Reproduction and extension of Galajda &amp; Hua (IEEE MIPR 2024) · 2026 · MAESTRO v3 · PyTorch</p>
-  <p class="finding">A Beethoven classifier judges each bar on its own, so imitations spliced from real Beethoven bars pass. Looking at how the bars are joined exposes them.</p>
+  <p class="lede study-intro">Some AI systems imitate a composer by retrieving real bars from that composer’s music and joining them together. I wanted to know whether a composer classifier can tell such an imitation from the real thing. I reproduced a published “is this Beethoven?” classifier (Galajda &amp; Hua, 2024) on the MAESTRO piano dataset, built imitations by splicing real Beethoven bars from different works, and then trained a second detector that looks only at how one bar leads into the next.</p>
   <div class="stats">
     <div class="stat"><b>0.96</b><span>AUC of the reproduced GRU classifier, stable under piece- and year-grouped splits</span></div>
     <div class="stat"><b>83–92%</b><span>of spliced segments classified as Beethoven (real Beethoven: 83%)</span></div>
@@ -121,8 +121,8 @@
 </section>
 
 </main>
-<footer><div class="wrap"><span>© 2026 Zongyou (Fred) Xiang</span><span><a href="https://github.com/xiangzongyou">GitHub</a> · zx1554@nyu.edu</span></div></footer>
-<script src="assets/spectro.js?v=20261108e"></script>
-<script src="assets/media.js?v=20261108e"></script>
+<footer><div class="wrap"><span>© 2026 Zongyou (Fred) Xiang</span><span><a href="https://github.com/xiangzongyou">GitHub</a> · fzyxiang@gmail.com</span></div></footer>
+<script src="assets/spectro.js?v=20261108f"></script>
+<script src="assets/media.js?v=20261108f"></script>
 </body>
 </html>

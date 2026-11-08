@@ -272,3 +272,4 @@ html[lang="zh-CN"] .label, html[lang="zh-CN"] .role-tag { letter-spacing: .06em;
 .degrees b { font-weight: 600; }
 .degrees .yrs { font: 400 .82rem var(--mono); color: var(--muted); white-space: nowrap; }
 @media (max-width: 640px) { .degrees li { flex-direction: column; gap: 0; } }
+.study-intro { margin-top: 18px; }
