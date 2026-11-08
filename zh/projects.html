@@ -7,8 +7,8 @@
 <meta name="description" content="相宗佑（Zongyou Xiang）：中佛罗里达大学数据分析硕士在读，研究如何检测 AI 生成的音乐、判断它在模仿谁、核查它是否抄袭已有作品。">
 <link rel="alternate" hreflang="en" href="../projects.html">
 <link rel="preload" href="../assets/fonts/bricolage-grotesque-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/fonts.css?v=20261108c">
-<link rel="stylesheet" href="../assets/site.css?v=20261108c">
+<link rel="stylesheet" href="../assets/fonts.css?v=20261108e">
+<link rel="stylesheet" href="../assets/site.css?v=20261108e">
 </head>
 <body>
 <header class="topbar">
@@ -33,36 +33,37 @@
 
 <div class="stack">
   <span class="label">项目</span>
-  <h1>小项目</h1>
-  <p class="lede">我在课程和课外项目里学会了处理数据。</p>
+  <h1>其他项目</h1>
+  <p class="lede">课程和课余项目。</p>
 </div>
 
 <section class="project" style="margin-top:56px">
   <span class="label">网页应用 · 2024 – 2026</span>
   <h2 style="margin-top:8px">Hitting the Vibe</h2>
-  <p class="meta">我的第一个数据项目 · 源于 NYU 的四人课程项目，后来做成了可以使用的应用</p>
-  <p class="finding">从客人们的 Spotify 歌单里自动挑歌，组成一份共享的派对歌单，选出适合跳舞、有活力、彼此搭配的歌。</p>
+  <p class="meta">使用 Spotify 音乐歌单</p>
+  <p class="finding">从参加活动的宾客的歌单里自动挑选合适的曲目，组成一个共享歌单。</p>
   <ul class="points">
-    <li><b>怎么做。</b>每位客人的歌按“派对分”打分（可跳舞程度 + 能量 − 原声程度）。高分的歌再按六个音频特征计算余弦相似度，最合群的 25 首组成歌单。</li>
-    <li><b>测试发现。</b>单靠音频特征挑不出派对歌（AUC 0.48–0.60）；先把特征标准化，25 首里会换掉 10 首。</li>
-    <li><b>说明。</b>演示用的是模拟客人和 2020 年的公开 Spotify 数据集，因为 Spotify 的音频特征接口已经不对新应用开放。</li>
+    <li><b>怎么挑。</b>先给每个人的歌打一个“派对分”（适不适合跳舞、够不够嗨、是不是太安静），每人挑出分最高的几首，再从里面选出风格最接近的 25 首。</li>
+    <li><b>试下来发现。</b>光看 Spotify 的音频特征，其实分不太出哪些是派对歌（AUC 0.48–0.60）；数据处理方式稍微一改，25 首里就会换掉 10 首。</li>
+    <li><b>来历。</b>最早是 NYU 课上四人小组的作业，后来我自己把它做成了能用的网页。</li>
+    <li><b>说明。</b>演示里的宾客是模拟的，数据用的是 2020 年公开的 Spotify 数据，因为 Spotify 现在不再给新应用开放这部分接口。</li>
   </ul>
-  <div class="repo-links"><a href="https://xiangzongyou.com/HittingtheVibe/">在线演示 →</a><a href="https://github.com/xiangzongyou/HittingtheVibe">代码 →</a></div>
+  <div class="repo-links"><a href="https://xiangzongyou.com/HittingtheVibe/">在线试用 →</a><a href="https://github.com/xiangzongyou/HittingtheVibe">代码 →</a></div>
 </section>
 
 <section class="project">
   <span class="label">课程项目 · 2026 年夏</span>
   <h2 style="margin-top:8px">脑肿瘤 MRI 分类</h2>
-  <p class="meta">UCF 数据挖掘方法 II · 两人小组</p>
-  <p class="finding">准确率 75.9% 的模型，只找出了 23% 的胶质瘤病例。分类别看的结果和整体分数完全是两回事。</p>
+  <p class="meta">UCF 数据挖掘课 · 两人小组</p>
+  <p class="finding">最好的模型准确率有 75.9%，可胶质瘤只找出了 23%。只看总体准确率，很容易被误导。</p>
   <ul class="points">
-    <li><b>方法。</b>对 3,264 张四类 MRI 图像的像素特征做 F 检验筛选和 PCA 降维，再比较九个模型，从正则化回归、树集成到 CNN。</li>
+    <li><b>做法。</b>把 3,264 张 MRI 图片（四类）的像素特征先筛选、再用 PCA 压缩，然后比较了九种模型，从回归、树模型到 CNN。</li>
   </ul>
 </section>
 
 </main>
 <footer><div class="wrap"><span>© 2026 相宗佑 Zongyou (Fred) Xiang</span><span><a href="https://github.com/xiangzongyou">GitHub</a> · zx1554@nyu.edu</span></div></footer>
-<script src="../assets/spectro.js?v=20261108c"></script>
-<script src="../assets/media.js?v=20261108c"></script>
+<script src="../assets/spectro.js?v=20261108e"></script>
+<script src="../assets/media.js?v=20261108e"></script>
 </body>
 </html>
