@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research · Zongyou (Fred) Xiang</title>
+<meta name="description" content="Zongyou (Fred) Xiang: M.S. Data Analytics student at UCF researching how to detect AI-generated music, identify whom it imitates, and verify whether it copies existing works.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">Zongyou (Fred) Xiang</a>
+    <nav aria-label="Main"><ul class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html" aria-current="page">Research</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="cv.html">CV</a></li>
+    </ul></nav>
+  </div>
+</header>
+<div class="band slim" aria-hidden="true">
+  <canvas class="spectro"></canvas>
+  
+</div>
+
+<main class="wrap">
+
+<div class="stack">
+  <span class="label">Research</span>
+  <h1>Two pilot studies, one problem</h1>
+  <p class="lede">Detectors of AI-generated music work well on the examples they were trained on and fail on new ones. I tested this in audio and in symbolic music.</p>
+</div>
+
+<section class="project" id="unseen" style="margin-top:56px">
+  <span class="label">Study 1 · Audio</span>
+  <h2 style="margin-top:8px">AI Music Detection on Unseen Generators</h2>
+  <p class="meta">Independent pilot study · 2026 · FakeMusicCaps · PyTorch</p>
+  <p class="finding">A detector that catches AI music from generators it was trained on catches only about half of the music from a generator it has never seen.</p>
+  <div class="stats">
+    <div class="stat"><b>0.975</b><span>balanced accuracy of the CNN on generators seen in training</span></div>
+    <div class="stat"><b>0.50</b><span>share of clips from an unseen generator that it flags as AI</span></div>
+    <div class="stat"><b>0.21</b><span>AUC on unseen MusicLDM for a spectral-statistics detector: rated more real than real music</span></div>
+  </div>
+  <figure>
+    <div class="frame"><img src="assets/overview.png" alt="Bar charts of five detectors on unseen generators: mean detection rates between 0.35 and 0.56, mean AUC between 0.59 and 0.90" loading="lazy"></div>
+    <figcaption>Five detectors, leave-one-generator-out, mean of 3 seeds. Left: share of unseen-generator clips flagged as AI. Right: AUC.</figcaption>
+  </figure>
+  <ul class="points">
+    <li><b>Data.</b> 2,856 real MusicCaps clips and 27,605 AI clips from five text-to-music models, all 10 s at 16 kHz. Train and test are split by MusicCaps caption, so the same prompt never appears on both sides.</li>
+    <li><b>Test.</b> Each generator is left out of training in turn, then the detector is scored on it. This is the situation a streaming platform faces when a new model is released.</li>
+    <li><b>No single fix.</b> Removing each clip's spectral envelope raises AUC on MusicLDM from 0.69 to 0.90 but lowers it on MusicGen and Stable Audio Open.</li>
+    <li><b>Architecture tracks difficulty.</b> Generators that decode through a mel-spectrogram VAE and HiFi-GAN transfer to each other. MusicGen and Stable Audio Open stay hard (detection 0.18–0.34).</li>
+  </ul>
+  <figure>
+    <div class="frame"><img src="assets/per_generator_auc.png" alt="AUC per held-out generator for each detector" loading="lazy"></div>
+    <figcaption>AUC on each held-out generator.</figcaption>
+  </figure>
+  <p class="note">Limits: only 52% of real MusicCaps clips could still be downloaded; real clips are lossy YouTube audio while AI clips are lossless; 3 seeds; five open-source generators.</p>
+  <div class="repo-links"><a href="https://github.com/xiangzongyou/ai-music-detection-unseen">Code and full results →</a></div>
+</section>
+
+<section class="project" id="beethoven">
+  <span class="label">Study 2 · Symbolic music</span>
+  <h2 style="margin-top:8px">Testing a Beethoven Classifier on Recombined Imitations</h2>
+  <p class="meta">Reproduction and extension of Galajda &amp; Hua (IEEE MIPR 2024) · 2026 · MAESTRO v3 · PyTorch</p>
+  <p class="finding">A Beethoven classifier judges each bar on its own, so imitations spliced from real Beethoven bars pass. Looking at how the bars are joined exposes them.</p>
+  <div class="stats">
+    <div class="stat"><b>0.96</b><span>AUC of the reproduced GRU classifier, stable under piece- and year-grouped splits</span></div>
+    <div class="stat"><b>83–92%</b><span>of spliced segments classified as Beethoven (real Beethoven: 83%)</span></div>
+    <div class="stat"><b>0.94–0.96</b><span>AUC of a transition detector separating spliced from real 32-bar segments</span></div>
+  </div>
+  <figure class="chart">
+    <div class="frame"><svg viewBox="0 0 680 298" role="img" aria-label="Share of segments classified as Beethoven, by condition">
+<line class="grid" x1="270" y1="22" x2="270" y2="272"/>
+<text class="tick" x="270" y="290" text-anchor="middle">0%</text>
+<line class="grid" x1="360" y1="22" x2="360" y2="272"/>
+<text class="tick" x="360" y="290" text-anchor="middle">25%</text>
+<line class="grid" x1="450" y1="22" x2="450" y2="272"/>
+<text class="tick" x="450" y="290" text-anchor="middle">50%</text>
+<line class="grid" x1="540" y1="22" x2="540" y2="272"/>
+<text class="tick" x="540" y="290" text-anchor="middle">75%</text>
+<line class="grid" x1="630" y1="22" x2="630" y2="272"/>
+<text class="tick" x="630" y="290" text-anchor="middle">100%</text>
+<text x="258" y="45" text-anchor="end" font-size="12">Real Beethoven segments</text>
+<rect class="bar real" x="270" y="33" width="298.8" height="18" rx="2"/>
+<text x="574.8" y="46" font-size="12" font-weight="600">83%</text>
+<text x="258" y="79" text-anchor="end" font-size="12">Bars shuffled in a segment</text>
+<rect class="bar mid" x="270" y="67" width="219.6" height="18" rx="2"/>
+<text x="495.6" y="80" font-size="12" font-weight="600">61%</text>
+<text x="258" y="113" text-anchor="end" font-size="12">Spliced Beethoven, 2-bar chunks</text>
+<rect class="bar fake" x="270" y="101" width="331.2" height="18" rx="2"/>
+<text x="607.2" y="114" font-size="12" font-weight="600">92%</text>
+<text x="258" y="147" text-anchor="end" font-size="12">Spliced Beethoven, 4-bar chunks</text>
+<rect class="bar fake" x="270" y="135" width="309.6" height="18" rx="2"/>
+<text x="585.6" y="148" font-size="12" font-weight="600">86%</text>
+<text x="258" y="181" text-anchor="end" font-size="12">Smooth splice, 4-bar chunks</text>
+<rect class="bar fake" x="270" y="169" width="306.0" height="18" rx="2"/>
+<text x="582.0" y="182" font-size="12" font-weight="600">85%</text>
+<text x="258" y="215" text-anchor="end" font-size="12">Spliced other composers</text>
+<rect class="bar mid" x="270" y="203" width="90.0" height="18" rx="2"/>
+<text x="366.0" y="216" font-size="12" font-weight="600">25%</text>
+<text x="258" y="249" text-anchor="end" font-size="12">Real other composers</text>
+<rect class="bar mid" x="270" y="237" width="28.8" height="18" rx="2"/>
+<text x="304.8" y="250" font-size="12" font-weight="600">8%</text>
+</svg></div>
+    <figcaption>Share of 32-bar segments the GRU classifies as Beethoven, mean of 3 runs on held-out works.</figcaption>
+  </figure>
+  <ul class="points">
+    <li><b>Reproduction.</b> A two-layer GRU on 27 features per 2-second bar, as in Galajda &amp; Hua (2024). AUC stays at 0.96 when works or recording years are held out.</li>
+    <li><b>Recombination.</b> Splicing bars from different Beethoven works does not lower the score. Splicing even raises it for other composers' music, from 8% to 25%.</li>
+    <li><b>Transitions.</b> A detector that sees only the join between two bars (key change, melodic leap, density jump, held notes) separates spliced segments from real ones.</li>
+    <li><b>The same generalization gap.</b> Trained only on random splices, the detector drops to AUC 0.73 on splices chosen to sound smooth; trained the other way, it drops to 0.56. Smooth splices overshoot: their mean melodic leap is 1.6 semitones, against 9.1 in real Beethoven.</li>
+  </ul>
+  <div class="repo-links"><a href="https://github.com/xiangzongyou/beethoven-recombination-detection">Code and full results →</a></div>
+</section>
+
+</main>
+<footer><div class="wrap"><span>© 2026 Zongyou (Fred) Xiang</span><span><a href="https://github.com/xiangzongyou">GitHub</a> · zx1554@nyu.edu</span></div></footer>
+<script src="assets/spectro.js"></script>
+<script src="assets/media.js"></script>
+</body>
+</html>

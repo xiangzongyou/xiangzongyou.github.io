@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zongyou (Fred) Xiang</title>
+<meta name="description" content="Zongyou (Fred) Xiang: M.S. Data Analytics student at UCF researching how to detect AI-generated music, identify whom it imitates, and verify whether it copies existing works.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">Zongyou (Fred) Xiang</a>
+    <nav aria-label="Main"><ul class="nav">
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="cv.html">CV</a></li>
+    </ul></nav>
+  </div>
+</header>
+<div class="band" aria-hidden="true">
+  <canvas class="spectro"></canvas>
+  <span class="axis tl">8 kHz</span><span class="axis bl">0 Hz · 128 mel bands</span><span class="axis br">time →</span>
+</div>
+<div class="band-caption"><div class="wrap">A synthetic log-mel spectrogram, drawn live in your browser. This is the kind of picture my audio detectors read.</div></div>
+<main class="wrap">
+
+<section class="intro">
+  <div class="portrait"><img src="assets/photo.jpg" alt="Portrait of Zongyou (Fred) Xiang" width="560" height="560"></div>
+  <div class="stack">
+    <h1>Zongyou (Fred) Xiang</h1>
+    <p class="role">M.S. Data Analytics, University of Central Florida · Applying to Ph.D. programs for Fall 2027</p>
+    <p class="lede">I come to machine learning from music: a B.A. in electronic music at Bard College, an M.A. in music business at NYU, and work in artist management, music publishing and platform operations. Now I study how to tell where a piece of AI-generated music came from.</p>
+    <ul class="chips">
+      <li><a href="cv.pdf">CV (PDF)</a></li>
+      <li><a href="https://github.com/xiangzongyou">GitHub</a></li>
+      <li><span class="mono">zx1554@nyu.edu</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><h2>Research interest</h2><span class="label">Provenance of AI-generated music</span></div>
+  <div class="questions">
+    <div class="q"><span class="label">Detect</span><p>Was this piece made by AI?</p></div>
+    <div class="q"><span class="label">Attribute</span><p>Whose style does it imitate?</p></div>
+    <div class="q"><span class="label">Verify</span><p>Does it copy existing works?</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><h2>Research</h2><a class="label" href="research.html">All details →</a></div>
+  <div class="entry">
+    <div class="when">2026 · audio</div>
+    <div>
+      <h3><a href="research.html#unseen">AI Music Detection on Unseen Generators</a></h3>
+      <p>A detector with <span class="num">0.975</span> balanced accuracy on the generators it was trained on catches only about half of the clips from a generator it has never seen.</p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="when">2026 · symbolic</div>
+    <div>
+      <h3><a href="research.html#beethoven">Testing a Beethoven Classifier on Recombined Imitations</a></h3>
+      <p>Real Beethoven bars spliced from different works pass as Beethoven <span class="num">83–92%</span> of the time. A detector that reads the joins between bars separates them from real music.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><h2>Education</h2></div>
+  <div class="entry"><div class="when">2026 – 2027</div><div><h3>University of Central Florida</h3><p class="muted">M.S. Data Analytics (expected May 2027)</p></div></div>
+  <div class="entry"><div class="when">2022 – 2024</div><div><h3>New York University</h3><p class="muted">M.A. Music Business</p></div></div>
+  <div class="entry"><div class="when">2019 – 2022</div><div><h3>Bard College</h3><p class="muted">B.A. Electronic Music</p></div></div>
+</section>
+
+</main>
+<footer><div class="wrap"><span>© 2026 Zongyou (Fred) Xiang</span><span><a href="https://github.com/xiangzongyou">GitHub</a> · zx1554@nyu.edu</span></div></footer>
+<script src="assets/spectro.js"></script>
+<script src="assets/media.js"></script>
+</body>
+</html>

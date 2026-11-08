@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects · Zongyou (Fred) Xiang</title>
+<meta name="description" content="Zongyou (Fred) Xiang: M.S. Data Analytics student at UCF researching how to detect AI-generated music, identify whom it imitates, and verify whether it copies existing works.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">Zongyou (Fred) Xiang</a>
+    <nav aria-label="Main"><ul class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="projects.html" aria-current="page">Projects</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="cv.html">CV</a></li>
+    </ul></nav>
+  </div>
+</header>
+<div class="band slim" aria-hidden="true">
+  <canvas class="spectro"></canvas>
+  
+</div>
+
+<main class="wrap">
+
+<div class="stack">
+  <span class="label">Projects</span>
+  <h1>Smaller projects</h1>
+  <p class="lede">Course and side projects where I learned to work with data.</p>
+</div>
+
+<section class="project" style="margin-top:56px">
+  <span class="label">Web app · 2024 – 2026</span>
+  <h2 style="margin-top:8px">Hitting the Vibe</h2>
+  <p class="meta">My first data project · began as an NYU course project (team of four), later built as a working app</p>
+  <p class="finding">An app that picks songs from guests' Spotify playlists and builds one shared party playlist of danceable, energetic tracks that fit together.</p>
+  <ul class="points">
+    <li><b>How it works.</b> Each guest's songs get a party score (danceability + energy − acousticness). The top tracks are compared by cosine similarity over six audio features, and the 25 that fit the group best form the playlist.</li>
+    <li><b>What testing showed.</b> Audio features alone cannot pick out party songs (AUC 0.48–0.60), and standardizing the features first swaps 10 of the 25 songs.</li>
+    <li><b>Note.</b> The demo uses simulated guests and a public 2020 Spotify dataset, because Spotify's audio-features API is closed to new apps.</li>
+  </ul>
+  <div class="repo-links"><a href="https://xiangzongyou.github.io/HittingtheVibe/">Live demo →</a><a href="https://github.com/xiangzongyou/HittingtheVibe">Code →</a></div>
+</section>
+
+<section class="project">
+  <span class="label">Course project · Summer 2026</span>
+  <h2 style="margin-top:8px">Brain Tumor MRI Classification</h2>
+  <p class="meta">Data Mining Methodology II, UCF · team of two</p>
+  <p class="finding">A model with 75.9% accuracy found only 23% of glioma cases. The per-class numbers told a different story from the overall score.</p>
+  <ul class="points">
+    <li><b>Method.</b> Reduced the pixel features of 3,264 MRI scans in four classes with F-test selection and PCA, then compared nine models, from regularized regression and tree ensembles to a CNN.</li>
+  </ul>
+</section>
+
+</main>
+<footer><div class="wrap"><span>© 2026 Zongyou (Fred) Xiang</span><span><a href="https://github.com/xiangzongyou">GitHub</a> · zx1554@nyu.edu</span></div></footer>
+<script src="assets/spectro.js"></script>
+<script src="assets/media.js"></script>
+</body>
+</html>
