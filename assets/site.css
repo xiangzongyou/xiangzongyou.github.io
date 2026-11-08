@@ -273,3 +273,9 @@ html[lang="zh-CN"] .label, html[lang="zh-CN"] .role-tag { letter-spacing: .06em;
 .degrees .yrs { font: 400 .82rem var(--mono); color: var(--muted); white-space: nowrap; }
 @media (max-width: 640px) { .degrees li { flex-direction: column; gap: 0; } }
 .study-intro { margin-top: 18px; }
+
+/* home: email on its own line */
+.email-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; font: 500 1.05rem/1.4 var(--mono); }
+.email-line .email-label { font: 500 .74rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.email-line a { color: var(--ink); text-decoration-color: var(--accent); }
+.email-line a:hover { color: var(--accent); }
