@@ -33,50 +33,50 @@
 
 <div class="stack">
   <span class="label">研究</span>
-  <h1>两个小研究，同一个问题</h1>
-  <p class="lede">AI 音乐检测器在训练过的数据上表现很好，一碰到新东西就不灵了。我在音频和乐谱两个方向上都试了一下。</p>
+  <h1>两项研究，一个问题</h1>
+  <p class="lede">检测器在已知数据上表现出色，面对新样本则明显失效。以下两项研究分别从音频与乐谱验证这一问题。</p>
 </div>
 
 <section class="project" id="unseen" style="margin-top:56px">
   <span class="label">研究一 · 音频</span>
-  <h2 style="margin-top:8px">AI 音乐检测：碰到没见过的模型怎么办</h2>
-  <p class="meta">个人研究 · 2026 · FakeMusicCaps 数据集 · PyTorch</p>
-  <p class="lede study-intro">AI 音乐模型隔几个月就出一个新的，检测器只有在没见过的模型上也管用，才算真的有用。我用真实音乐和 4 个文字生成音乐模型做的片段训练检测器，再用第 5 个没参与训练的模型来测，5 个模型轮流来一遍。检测器看的是对数梅尔频谱图，一个是基于简单频谱统计的逻辑回归，一个是小型 CNN。我还试了两种办法，不让检测器依赖每个模型整体的频谱轮廓。</p>
+  <h2 style="margin-top:8px">面向未知模型的 AI 音乐检测</h2>
+  <p class="meta">独立研究 · 2026 · FakeMusicCaps · PyTorch</p>
+  <p class="lede study-intro">生成模型迭代迅速，检测器能否识别未见过的模型，决定其实际价值。此研究以真实音乐与四个文生音乐模型的作品训练检测器，留出第五个模型测试，五个模型轮换进行。检测器基于对数梅尔频谱，采用逻辑回归与小型 CNN 两种模型，并尝试两种方法，削弱其对整体频谱轮廓的依赖。</p>
   <div class="stats">
-    <div class="stat"><b>0.975</b><span>CNN 在见过的模型上的平衡准确率</span></div>
-    <div class="stat"><b>0.50</b><span>没见过的模型做的音乐里，被认出是 AI 的比例</span></div>
-    <div class="stat"><b>0.21</b><span>一个看频谱统计的检测器在 MusicLDM 上的 AUC，低于 0.5，等于把 AI 音乐当成了比真歌还真</span></div>
+    <div class="stat"><b>0.975</b><span>CNN 在已知模型上的平衡准确率</span></div>
+    <div class="stat"><b>0.50</b><span>对未知模型生成音乐的检出率</span></div>
+    <div class="stat"><b>0.21</b><span>频谱统计检测器在 MusicLDM 上的 AUC，低于随机水平</span></div>
   </div>
   <figure>
-    <div class="frame"><img src="../assets/overview.png" alt="五种检测器碰到没见过的模型时，平均识别率在 0.35 到 0.56 之间，平均 AUC 在 0.59 到 0.90 之间" loading="lazy"></div>
-    <figcaption>五种检测器，每次留一个模型不参与训练，结果是 3 次实验的平均。左边是认出 AI 的比例，右边是 AUC。（图是英文的）</figcaption>
+    <div class="frame"><img src="../assets/overview.png" alt="五种检测器在未知模型上的平均检出率（0.35–0.56）与平均 AUC（0.59–0.90）" loading="lazy"></div>
+    <figcaption>五种检测器，留一模型测试，三次实验平均。左：检出率；右：AUC。（图为英文）</figcaption>
   </figure>
   <ul class="points">
-    <li><b>数据。</b>2,856 段真实音乐（来自 MusicCaps）和 27,605 段 AI 音乐，来自 5 个“文字生成音乐”的模型，每段 10 秒。同一个提示词生成的片段只放在训练或测试一边，免得检测器靠“认内容”蒙对。</li>
-    <li><b>怎么测。</b>每次拿掉一个模型不让检测器学，再用它来考。新 AI 模型一发布，音乐平台遇到的就是这种情况。</li>
-    <li><b>没有一招通吃的办法。</b>把每段音频整体的频谱轮廓去掉后，MusicLDM 的 AUC 从 0.69 涨到 0.90，可 MusicGen 和 Stable Audio Open 反而变差了。</li>
-    <li><b>好不好认，跟模型结构有关。</b>解码方式相同的模型（梅尔频谱 VAE + HiFi-GAN），学会一个就能认出另一个；MusicGen 和 Stable Audio Open 结构不一样，一直很难认，只认出 18%–34%。</li>
+    <li><b>数据。</b>真实音乐 2,856 段（MusicCaps），AI 音乐 27,605 段，来自五个文生音乐模型，每段 10 秒。按提示词划分训练与测试集，避免内容泄漏。</li>
+    <li><b>测试方法。</b>每轮留出一个模型不参与训练，用于测试，模拟新模型发布后平台面对的真实场景。</li>
+    <li><b>无通用解法。</b>去除频谱包络后，MusicLDM 的 AUC 由 0.69 升至 0.90，MusicGen 与 Stable Audio Open 则有所下降。</li>
+    <li><b>与模型结构相关。</b>采用梅尔频谱 VAE + HiFi-GAN 解码的模型之间可相互迁移；MusicGen 与 Stable Audio Open 结构不同，检出率始终仅 18%–34%。</li>
   </ul>
   <figure>
-    <div class="frame"><img src="../assets/per_generator_auc.png" alt="每个被拿掉的模型上，各检测器的 AUC" loading="lazy"></div>
-    <figcaption>每个被拿掉的模型上，各检测器的 AUC。</figcaption>
+    <div class="frame"><img src="../assets/per_generator_auc.png" alt="各留出模型上的 AUC" loading="lazy"></div>
+    <figcaption>各留出模型上的 AUC。</figcaption>
   </figure>
-  <p class="note">不足：MusicCaps 的真实音乐只下载到一半多（52%）；真实音乐是 YouTube 压缩过的，AI 音乐是无损的；只做了 3 次实验；只测了 5 个开源模型。</p>
-  <div class="repo-links"><a href="https://github.com/xiangzongyou/ai-music-detection-unseen">代码和完整结果（英文） →</a></div>
+  <p class="note">局限：MusicCaps 真实音乐仅获取 52%；真实音频经 YouTube 有损压缩，AI 音频为无损；三次实验；仅涉及五个开源模型。</p>
+  <div class="repo-links"><a href="https://github.com/xiangzongyou/ai-music-detection-unseen">代码与完整结果（英文）→</a></div>
 </section>
 
 <section class="project" id="beethoven">
   <span class="label">研究二 · 乐谱</span>
-  <h2 style="margin-top:8px">贝多芬分类器能被拼接仿作骗过吗</h2>
-  <p class="meta">复现并延伸 Galajda &amp; Hua（IEEE MIPR 2024）· 2026 · MAESTRO 数据集 · PyTorch</p>
-  <p class="lede study-intro">有些 AI 模仿作曲家的方式，是从他的作品里找出真实的小节，再拼在一起。我想知道作曲家分类器能不能分辨这种仿作和真作。我先在 MAESTRO 钢琴数据集上复现了一个已发表的“是不是贝多芬”分类器（Galajda &amp; Hua, 2024），再把不同贝多芬作品的真实小节拼成仿作去测它，最后又训练了一个只看前后小节怎么衔接的检测器。</p>
+  <h2 style="margin-top:8px">拼接仿作与贝多芬风格识别</h2>
+  <p class="meta">复现并拓展 Galajda &amp; Hua（IEEE MIPR 2024）· 2026 · MAESTRO · PyTorch</p>
+  <p class="lede study-intro">AI 可通过拼接作曲家原作片段来模仿其风格。此研究以贝多芬为例：先在 MAESTRO 钢琴数据集上复现已发表的贝多芬分类器（Galajda &amp; Hua, 2024），再以不同作品的真实小节构造拼接仿作，测试分类器能否识别；最后训练一个仅依据小节衔接特征的检测器。</p>
   <div class="stats">
-    <div class="stat"><b>0.96</b><span>复现出来的分类器的 AUC，换成更严格的数据划分也很稳</span></div>
-    <div class="stat"><b>83–92%</b><span>拼接片段被认成贝多芬的比例（真贝多芬是 83%）</span></div>
-    <div class="stat"><b>0.94–0.96</b><span>只看衔接处的检测器，分辨拼接和原作的 AUC</span></div>
+    <div class="stat"><b>0.96</b><span>复现分类器的 AUC，更严格的数据划分下依然稳定</span></div>
+    <div class="stat"><b>83–92%</b><span>拼接仿作被判为贝多芬的比例（原作 83%）</span></div>
+    <div class="stat"><b>0.94–0.96</b><span>衔接检测器区分拼接与原作的 AUC</span></div>
   </div>
   <figure class="chart">
-    <div class="frame"><svg viewBox="0 0 680 298" role="img" aria-label="各种情况下被认成贝多芬的比例">
+    <div class="frame"><svg viewBox="0 0 680 298" role="img" aria-label="各条件下被判为贝多芬的比例">
 <line class="grid" x1="230" y1="22" x2="230" y2="272"/>
 <text class="tick" x="230" y="290" text-anchor="middle">0%</text>
 <line class="grid" x1="330" y1="22" x2="330" y2="272"/>
@@ -87,19 +87,19 @@
 <text class="tick" x="530" y="290" text-anchor="middle">75%</text>
 <line class="grid" x1="630" y1="22" x2="630" y2="272"/>
 <text class="tick" x="630" y="290" text-anchor="middle">100%</text>
-<text x="218" y="45" text-anchor="end" font-size="13">真贝多芬</text>
+<text x="218" y="45" text-anchor="end" font-size="13">贝多芬原作</text>
 <rect class="bar real" x="230" y="33" width="332.0" height="18" rx="2"/>
 <text x="568.0" y="46" font-size="12" font-weight="600">83%</text>
-<text x="218" y="79" text-anchor="end" font-size="13">同一段里打乱小节</text>
+<text x="218" y="79" text-anchor="end" font-size="13">段内打乱小节</text>
 <rect class="bar mid" x="230" y="67" width="244.0" height="18" rx="2"/>
 <text x="480.0" y="80" font-size="12" font-weight="600">61%</text>
-<text x="218" y="113" text-anchor="end" font-size="13">贝多芬拼接（2 小节一段）</text>
+<text x="218" y="113" text-anchor="end" font-size="13">贝多芬拼接（2 小节）</text>
 <rect class="bar fake" x="230" y="101" width="368.0" height="18" rx="2"/>
 <text x="604.0" y="114" font-size="12" font-weight="600">92%</text>
-<text x="218" y="147" text-anchor="end" font-size="13">贝多芬拼接（4 小节一段）</text>
+<text x="218" y="147" text-anchor="end" font-size="13">贝多芬拼接（4 小节）</text>
 <rect class="bar fake" x="230" y="135" width="344.0" height="18" rx="2"/>
 <text x="580.0" y="148" font-size="12" font-weight="600">86%</text>
-<text x="218" y="181" text-anchor="end" font-size="13">挑过的顺滑拼接</text>
+<text x="218" y="181" text-anchor="end" font-size="13">筛选后的平滑拼接</text>
 <rect class="bar fake" x="230" y="169" width="340.0" height="18" rx="2"/>
 <text x="576.0" y="182" font-size="12" font-weight="600">85%</text>
 <text x="218" y="215" text-anchor="end" font-size="13">其他作曲家拼接</text>
@@ -109,15 +109,15 @@
 <rect class="bar mid" x="230" y="237" width="32.0" height="18" rx="2"/>
 <text x="268.0" y="250" font-size="12" font-weight="600">8%</text>
 </svg></div>
-    <figcaption>分类器把每段 32 小节认成贝多芬的比例，3 次实验平均，测的都是没参与训练的作品。</figcaption>
+    <figcaption>GRU 将 32 小节片段判为贝多芬的比例；测试作品未参与训练，三次实验平均。</figcaption>
   </figure>
   <ul class="points">
-    <li><b>复现。</b>按 Galajda &amp; Hua（2024）的做法，用两层 GRU，每 2 秒算 27 个音乐特征。换成按作品、按录音年份划分数据，AUC 还是 0.96。</li>
-    <li><b>拼接。</b>把不同贝多芬作品的小节拼起来，分数一点没降。连其他作曲家的曲子，拼一拼也更容易被认成贝多芬（从 8% 涨到 25%）。</li>
-    <li><b>看衔接。</b>专门看两个小节接口的地方：调性有没有突然变、旋律有没有大跳、音符一下子变密还是变疏、延音有没有断。靠这些就能把拼接片段挑出来。</li>
-    <li><b>还是同一个老问题。</b>只学过随机拼接的检测器，碰到挑过、听起来顺的拼接，AUC 掉到 0.73；反过来训练，掉到 0.56。挑过的拼接其实顺过头了：旋律平均只跳 1.6 个半音，真贝多芬是 9.1。</li>
+    <li><b>复现。</b>沿用 Galajda &amp; Hua（2024）方法：两层 GRU，每 2 秒提取 27 个音乐特征。按作品或录音年份划分数据，AUC 仍为 0.96。</li>
+    <li><b>拼接测试。</b>跨作品拼接并未降低得分；其他作曲家的作品经拼接后，被判为贝多芬的比例由 8% 升至 25%。</li>
+    <li><b>衔接特征。</b>聚焦相邻小节交界处：调性变化、旋律跳进、音符密度突变、延音中断，据此可有效识别拼接片段。</li>
+    <li><b>泛化问题。</b>仅以随机拼接训练的检测器，面对筛选后的平滑拼接，AUC 降至 0.73；反向训练则降至 0.56。平滑拼接反而过度平滑：平均旋律跳进 1.6 个半音，原作为 9.1。</li>
   </ul>
-  <div class="repo-links"><a href="https://github.com/xiangzongyou/beethoven-recombination-detection">代码和完整结果（英文） →</a></div>
+  <div class="repo-links"><a href="https://github.com/xiangzongyou/beethoven-recombination-detection">代码与完整结果（英文）→</a></div>
 </section>
 
 </main>

@@ -33,19 +33,20 @@
 
 <div class="stack">
   <span class="label">Projects</span>
-  <h1>Smaller projects</h1>
-  <p class="lede">Course and side projects.</p>
+  <h1>Other projects</h1>
+  <p class="lede">Course and personal projects</p>
 </div>
 
 <section class="project" style="margin-top:56px">
   <span class="label">Web app · 2024 – 2026</span>
   <h2 style="margin-top:8px">Hitting the Vibe</h2>
-  <p class="meta">Built on Spotify playlists · began as an NYU course project (team of four), later built as a working app</p>
-  <p class="finding">An app that picks songs from guests' Spotify playlists and builds one shared party playlist of danceable, energetic tracks that fit together.</p>
+  <p class="meta">Built on Spotify playlists</p>
+  <p class="finding">Automatically selects tracks from event guests’ playlists to generate a shared playlist.</p>
   <ul class="points">
-    <li><b>How it works.</b> Each guest's songs get a party score (danceability + energy − acousticness). The top tracks are compared by cosine similarity over six audio features, and the 25 that fit the group best form the playlist.</li>
-    <li><b>What testing showed.</b> Audio features alone cannot pick out party songs (AUC 0.48–0.60), and standardizing the features first swaps 10 of the 25 songs.</li>
-    <li><b>Note.</b> The demo uses simulated guests and a public 2020 Spotify dataset, because Spotify's audio-features API is closed to new apps.</li>
+    <li><b>Method.</b> Tracks scored by danceability, energy and acousticness; each guest’s top tracks filtered by stylistic similarity to a final 25.</li>
+    <li><b>Findings.</b> Spotify audio features alone barely distinguish party songs (AUC 0.48–0.60); a small preprocessing change replaces 10 of 25 tracks.</li>
+    <li><b>Origin.</b> A four-person NYU course project, later developed independently into a web app.</li>
+    <li><b>Note.</b> Demo uses simulated guests and a public 2020 Spotify dataset (Spotify’s audio-features API is closed to new apps).</li>
   </ul>
   <div class="repo-links"><a href="https://xiangzongyou.github.io/HittingtheVibe/">Live demo →</a><a href="https://github.com/xiangzongyou/HittingtheVibe">Code →</a></div>
 </section>
@@ -54,9 +55,9 @@
   <span class="label">Course project · Summer 2026</span>
   <h2 style="margin-top:8px">Brain Tumor MRI Classification</h2>
   <p class="meta">Data Mining Methodology II, UCF · team of two</p>
-  <p class="finding">A model with 75.9% accuracy found only 23% of glioma cases. The per-class numbers told a different story from the overall score.</p>
+  <p class="finding">Best model: 75.9% accuracy but only 23% glioma recall; overall accuracy masked class-level differences.</p>
   <ul class="points">
-    <li><b>Method.</b> Reduced the pixel features of 3,264 MRI scans in four classes with F-test selection and PCA, then compared nine models, from regularized regression and tree ensembles to a CNN.</li>
+    <li><b>Method.</b> F-test selection and PCA on pixel features of 3,264 MRI scans across four classes; nine models compared, from regularized regression and tree ensembles to a CNN.</li>
   </ul>
 </section>
 

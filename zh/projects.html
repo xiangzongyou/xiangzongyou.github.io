@@ -34,30 +34,30 @@
 <div class="stack">
   <span class="label">项目</span>
   <h1>其他项目</h1>
-  <p class="lede">课程和课余项目。</p>
+  <p class="lede">课程与个人项目</p>
 </div>
 
 <section class="project" style="margin-top:56px">
   <span class="label">网页应用 · 2024 – 2026</span>
   <h2 style="margin-top:8px">Hitting the Vibe</h2>
-  <p class="meta">使用 Spotify 音乐歌单</p>
-  <p class="finding">从参加活动的宾客的歌单里自动挑选合适的曲目，组成一个共享歌单。</p>
+  <p class="meta">基于 Spotify 音乐歌单</p>
+  <p class="finding">从活动宾客的歌单中自动挑选合适曲目，生成共享歌单。</p>
   <ul class="points">
-    <li><b>怎么挑。</b>先给每个人的歌打一个“派对分”（适不适合跳舞、够不够嗨、是不是太安静），每人挑出分最高的几首，再从里面选出风格最接近的 25 首。</li>
-    <li><b>试下来发现。</b>光看 Spotify 的音频特征，其实分不太出哪些是派对歌（AUC 0.48–0.60）；数据处理方式稍微一改，25 首里就会换掉 10 首。</li>
-    <li><b>来历。</b>最早是 NYU 课上四人小组的作业，后来我自己把它做成了能用的网页。</li>
-    <li><b>说明。</b>演示里的宾客是模拟的，数据用的是 2020 年公开的 Spotify 数据，因为 Spotify 现在不再给新应用开放这部分接口。</li>
+    <li><b>方法。</b>按可舞性、能量与原声度为歌曲打分，选出每位宾客的高分曲目，再按风格相似度筛选 25 首。</li>
+    <li><b>发现。</b>仅凭 Spotify 音频特征难以区分派对歌曲（AUC 0.48–0.60）；预处理稍作调整，25 首中即有 10 首变化。</li>
+    <li><b>来源。</b>源自 NYU 四人小组课程项目，后独立开发为网页应用。</li>
+    <li><b>说明。</b>演示采用模拟宾客与 2020 年公开 Spotify 数据（Spotify 音频特征接口已停止向新应用开放）。</li>
   </ul>
-  <div class="repo-links"><a href="https://xiangzongyou.com/HittingtheVibe/">在线试用 →</a><a href="https://github.com/xiangzongyou/HittingtheVibe">代码 →</a></div>
+  <div class="repo-links"><a href="https://xiangzongyou.com/HittingtheVibe/">在线演示 →</a><a href="https://github.com/xiangzongyou/HittingtheVibe">代码 →</a></div>
 </section>
 
 <section class="project">
   <span class="label">课程项目 · 2026 年夏</span>
   <h2 style="margin-top:8px">脑肿瘤 MRI 分类</h2>
-  <p class="meta">UCF 数据挖掘课 · 两人小组</p>
-  <p class="finding">最好的模型准确率有 75.9%，可胶质瘤只找出了 23%。只看总体准确率，很容易被误导。</p>
+  <p class="meta">UCF 数据挖掘课程 · 两人小组</p>
+  <p class="finding">最佳模型准确率 75.9%，胶质瘤召回率仅 23%：总体准确率掩盖了类别间的差异。</p>
   <ul class="points">
-    <li><b>做法。</b>把 3,264 张 MRI 图片（四类）的像素特征先筛选、再用 PCA 压缩，然后比较了九种模型，从回归、树模型到 CNN。</li>
+    <li><b>方法。</b>对 3,264 张四类 MRI 图像的像素特征进行 F 检验筛选与 PCA 降维，比较九种模型，涵盖正则化回归、树集成与 CNN。</li>
   </ul>
 </section>
 
