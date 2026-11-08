@@ -49,7 +49,12 @@ document.querySelectorAll(".video[data-yt]").forEach(function (box) {
       if (audio.paused) { stopOthers(); audio.play(); } else { audio.pause(); }
     });
     audio.addEventListener("play", function () { p.classList.add("playing"); btn.setAttribute("aria-label", PAUSE + title); });
-    audio.addEventListener("pause", function () { p.classList.remove("playing"); btn.setAttribute("aria-label", PLAY + title); });
+    audio.addEventListener("pause", function () {
+      p.classList.remove("playing"); btn.setAttribute("aria-label", PLAY + title);
+      // pausing or switching tracks rewinds, so the next play starts from the beginning
+      try { audio.currentTime = 0; } catch (e) {}
+      cur.textContent = fmt(0); wave.setAttribute("aria-valuenow", 0); draw();
+    });
     audio.addEventListener("ended", function () { audio.currentTime = 0; draw(); });
     audio.addEventListener("timeupdate", function () { cur.textContent = fmt(audio.currentTime); wave.setAttribute("aria-valuenow", Math.floor(audio.currentTime)); draw(); });
     function seekTo(frac) {

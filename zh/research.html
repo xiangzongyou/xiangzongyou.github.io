@@ -7,8 +7,8 @@
 <meta name="description" content="相宗佑（Zongyou Xiang）：中佛罗里达大学数据分析硕士在读，研究如何检测 AI 生成的音乐、判断它在模仿谁、核查它是否抄袭已有作品。">
 <link rel="alternate" hreflang="en" href="../research.html">
 <link rel="preload" href="../assets/fonts/bricolage-grotesque-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/fonts.css?v=20261108g">
-<link rel="stylesheet" href="../assets/site.css?v=20261108g">
+<link rel="stylesheet" href="../assets/fonts.css?v=20261108h">
+<link rel="stylesheet" href="../assets/site.css?v=20261108h">
 </head>
 <body>
 <header class="topbar">
@@ -41,7 +41,7 @@
   <span class="label">研究一 · 音频</span>
   <h2 style="margin-top:8px">面向未知模型的 AI 音乐检测</h2>
   <p class="meta">独立研究 · 2026 · FakeMusicCaps · PyTorch</p>
-  <p class="lede study-intro">生成模型迭代迅速，检测器能否识别未见过的模型，决定其实际价值。此研究以真实音乐与四个文生音乐模型的作品训练检测器，留出第五个模型测试，五个模型轮换进行。检测器基于对数梅尔频谱，采用逻辑回归与小型 CNN 两种模型，并尝试两种方法，削弱其对整体频谱轮廓的依赖。</p>
+  <p class="lede study-intro">生成模型迭代迅速，检测器能否识别未见过的模型，决定其实际价值。此研究以真实音乐与四个 AI 音乐生成模型的作品训练检测器，留出第五个模型测试，五个模型轮换进行。检测器基于对数梅尔频谱，采用逻辑回归与小型 CNN 两种模型，并尝试两种方法，削弱其对整体频谱轮廓的依赖。</p>
   <div class="stats">
     <div class="stat"><b>0.975</b><span>CNN 在已知模型上的平衡准确率</span></div>
     <div class="stat"><b>0.50</b><span>对未知模型生成音乐的检出率</span></div>
@@ -52,7 +52,7 @@
     <figcaption>五种检测器，留一模型测试，三次实验平均。左：检出率；右：AUC。（图为英文）</figcaption>
   </figure>
   <ul class="points">
-    <li><b>数据。</b>真实音乐 2,856 段（MusicCaps），AI 音乐 27,605 段，来自五个文生音乐模型，每段 10 秒。按提示词划分训练与测试集，避免内容泄漏。</li>
+    <li><b>数据。</b>真实音乐 2,856 段（MusicCaps），AI 音乐 27,605 段，来自五个根据文字描述生成音乐的 AI 模型，每段 10 秒。按提示词划分训练与测试集，避免内容泄漏。</li>
     <li><b>测试方法。</b>每轮留出一个模型不参与训练，用于测试，模拟新模型发布后平台面对的真实场景。</li>
     <li><b>无通用解法。</b>去除频谱包络后，MusicLDM 的 AUC 由 0.69 升至 0.90，MusicGen 与 Stable Audio Open 则有所下降。</li>
     <li><b>与模型结构相关。</b>采用梅尔频谱 VAE + HiFi-GAN 解码的模型之间可相互迁移；MusicGen 与 Stable Audio Open 结构不同，检出率始终仅 18%–34%。</li>
@@ -122,7 +122,7 @@
 
 </main>
 <footer><div class="wrap"><span>© 2026 相宗佑 Zongyou (Fred) Xiang</span><span><a href="https://github.com/xiangzongyou">GitHub</a> · fzyxiang@gmail.com</span></div></footer>
-<script src="../assets/spectro.js?v=20261108g"></script>
-<script src="../assets/media.js?v=20261108g"></script>
+<script src="../assets/spectro.js?v=20261108h"></script>
+<script src="../assets/media.js?v=20261108h"></script>
 </body>
 </html>
