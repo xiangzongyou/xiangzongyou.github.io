@@ -20,10 +20,13 @@ document.querySelectorAll(".video[data-yt]").forEach(function (box) {
   function color(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
   players.forEach(function (p) {
     var peaks = p.dataset.peaks.split(",").map(Number);
-    var audio = new Audio(); audio.preload = "none"; audio.src = p.dataset.src;
+    var audio = p.querySelector("audio.native") || new Audio();
+    audio.preload = "none"; if (!audio.getAttribute("src")) audio.src = p.dataset.src;
+    audio.removeAttribute("controls");
+    p.classList.add("enhanced");
     var btn = p.querySelector(".pp"), wave = p.querySelector(".wave"), cv = wave.querySelector("canvas"), cur = p.querySelector(".cur");
     var zh = (document.documentElement.lang || "").indexOf("zh") === 0;
-    var title = btn.dataset.title || "";
+    var title = btn.dataset.title || (btn.getAttribute("aria-label") || "").replace(/^(Play|播放)\s*/, "");
     var PLAY = zh ? "播放 " : "Play ", PAUSE = zh ? "暂停 " : "Pause ";
     function draw() {
       var r = cv.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2);

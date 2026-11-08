@@ -255,3 +255,9 @@ html[lang="zh-CN"] body { line-height: 1.8; }
 html[lang="zh-CN"] h1 { letter-spacing: 0; }
 html[lang="zh-CN"] .label, html[lang="zh-CN"] .role-tag { letter-spacing: .06em; }
 .name-en { display: block; font: 500 1.05rem/1.4 var(--body); color: var(--muted); margin-top: 6px; letter-spacing: 0; }
+
+/* Without the script, each track falls back to the browser's own audio controls. */
+.player .native { width: 100%; height: 40px; }
+.player:not(.enhanced) .pp, .player:not(.enhanced) .wave, .player:not(.enhanced) .times { display: none; }
+.player:not(.enhanced) { grid-template-columns: minmax(0, 1fr); }
+.player.enhanced .native { display: none; }
