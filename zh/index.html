@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>相宗佑 Zongyou Xiang</title>
+<meta name="description" content="相宗佑（Zongyou Xiang）：中佛罗里达大学数据分析硕士在读，研究如何检测 AI 生成的音乐、判断它在模仿谁、核查它是否抄袭已有作品。">
+<link rel="alternate" hreflang="en" href="../index.html">
+<link rel="preload" href="../assets/fonts/bricolage-grotesque-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">相宗佑 Zongyou Xiang</a>
+    <nav aria-label="主导航"><ul class="nav">
+      <li><a href="index.html" aria-current="page">首页</a></li>
+      <li><a href="research.html">研究</a></li>
+      <li><a href="projects.html">项目</a></li>
+      <li><a href="music.html">音乐</a></li>
+      <li><a href="cv.html">简历</a></li>
+    </ul></nav>
+    <a class="lang-switch" href="../index.html" hreflang="en" lang="en">EN</a>
+  </div>
+</header>
+<div class="band" aria-hidden="true">
+  <canvas class="spectro"></canvas>
+  <span class="axis tl">8 kHz</span><span class="axis bl">0 Hz · 128 个梅尔频带</span><span class="axis br">时间 →</span>
+</div>
+<div class="band-caption"><div class="wrap">这是在你的浏览器里实时绘制的合成对数梅尔频谱图。我的音频检测器读的就是这种图。</div></div>
+<main class="wrap">
+
+<section class="intro">
+  <div class="portrait"><img src="../assets/photo.jpg" alt="相宗佑的照片" width="560" height="560"></div>
+  <div class="stack">
+    <h1>相宗佑<span class="name-en">Zongyou (Fred) Xiang</span></h1>
+    <p class="role">中佛罗里达大学（UCF）数据分析硕士在读 · 申请 2027 年秋季入学的博士项目</p>
+    <p class="lede">我从音乐走进机器学习：在巴德学院读电子音乐本科，在纽约大学读音乐商业硕士，之后做过艺人管理、音乐版权和平台运营。现在我研究如何判断一首 AI 生成的音乐从哪里来。</p>
+    <ul class="chips">
+      <li><a href="../cv.pdf">简历（PDF，英文）</a></li>
+      <li><a href="https://github.com/xiangzongyou">GitHub</a></li>
+      <li><span class="mono">zx1554@nyu.edu</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><h2>研究方向</h2><span class="label">AI 生成音乐的溯源</span></div>
+  <div class="questions">
+    <div class="q"><span class="label">检测</span><p>这首音乐是 AI 做的吗？</p></div>
+    <div class="q"><span class="label">归属</span><p>它在模仿谁的风格？</p></div>
+    <div class="q"><span class="label">核查</span><p>它抄袭了已有作品吗？</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><h2>研究</h2><a class="label" href="research.html">查看详情 →</a></div>
+  <div class="entry">
+    <div class="when">2026 · 音频</div>
+    <div>
+      <h3><a href="research.html#unseen">未见过的生成器上的 AI 音乐检测</a></h3>
+      <p>一个检测器在训练时见过的生成器上平衡准确率达到 <span class="num">0.975</span>，但面对从没见过的生成器，只能抓出大约一半的片段。</p>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="when">2026 · 符号音乐</div>
+    <div>
+      <h3><a href="research.html#beethoven">用拼接仿作测试贝多芬分类器</a></h3>
+      <p>把不同贝多芬作品的真实小节拼在一起，有 <span class="num">83–92%</span> 被判为贝多芬。只看小节衔接处的检测器，能把这些拼接片段和真实音乐分开。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><h2>教育背景</h2></div>
+  <div class="entry"><div class="when">2026 – 2027</div><div><h3>中佛罗里达大学</h3><p class="muted">数据分析硕士（预计 2027 年 5 月毕业）</p></div></div>
+  <div class="entry"><div class="when">2022 – 2024</div><div><h3>纽约大学</h3><p class="muted">音乐商业硕士</p></div></div>
+  <div class="entry"><div class="when">2019 – 2022</div><div><h3>巴德学院</h3><p class="muted">电子音乐学士</p></div></div>
+</section>
+
+</main>
+<footer><div class="wrap"><span>© 2026 相宗佑 Zongyou (Fred) Xiang</span><span><a href="https://github.com/xiangzongyou">GitHub</a> · zx1554@nyu.edu</span></div></footer>
+<script src="../assets/spectro.js"></script>
+<script src="../assets/media.js"></script>
+</body>
+</html>

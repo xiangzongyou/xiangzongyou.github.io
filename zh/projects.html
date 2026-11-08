@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>项目 · 相宗佑</title>
+<meta name="description" content="相宗佑（Zongyou Xiang）：中佛罗里达大学数据分析硕士在读，研究如何检测 AI 生成的音乐、判断它在模仿谁、核查它是否抄袭已有作品。">
+<link rel="alternate" hreflang="en" href="../projects.html">
+<link rel="preload" href="../assets/fonts/bricolage-grotesque-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">相宗佑 Zongyou Xiang</a>
+    <nav aria-label="主导航"><ul class="nav">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="research.html">研究</a></li>
+      <li><a href="projects.html" aria-current="page">项目</a></li>
+      <li><a href="music.html">音乐</a></li>
+      <li><a href="cv.html">简历</a></li>
+    </ul></nav>
+    <a class="lang-switch" href="../projects.html" hreflang="en" lang="en">EN</a>
+  </div>
+</header>
+<div class="band slim" aria-hidden="true">
+  <canvas class="spectro"></canvas>
+  
+</div>
+
+<main class="wrap">
+
+<div class="stack">
+  <span class="label">项目</span>
+  <h1>小项目</h1>
+  <p class="lede">我在课程和课外项目里学会了处理数据。</p>
+</div>
+
+<section class="project" style="margin-top:56px">
+  <span class="label">网页应用 · 2024 – 2026</span>
+  <h2 style="margin-top:8px">Hitting the Vibe</h2>
+  <p class="meta">我的第一个数据项目 · 源于 NYU 的四人课程项目，后来做成了可以使用的应用</p>
+  <p class="finding">从客人们的 Spotify 歌单里自动挑歌，组成一份共享的派对歌单，选出适合跳舞、有活力、彼此搭配的歌。</p>
+  <ul class="points">
+    <li><b>怎么做。</b>每位客人的歌按“派对分”打分（可跳舞程度 + 能量 − 原声程度）。高分的歌再按六个音频特征计算余弦相似度，最合群的 25 首组成歌单。</li>
+    <li><b>测试发现。</b>单靠音频特征挑不出派对歌（AUC 0.48–0.60）；先把特征标准化，25 首里会换掉 10 首。</li>
+    <li><b>说明。</b>演示用的是模拟客人和 2020 年的公开 Spotify 数据集，因为 Spotify 的音频特征接口已经不对新应用开放。</li>
+  </ul>
+  <div class="repo-links"><a href="https://xiangzongyou.com/HittingtheVibe/">在线演示 →</a><a href="https://github.com/xiangzongyou/HittingtheVibe">代码 →</a></div>
+</section>
+
+<section class="project">
+  <span class="label">课程项目 · 2026 年夏</span>
+  <h2 style="margin-top:8px">脑肿瘤 MRI 分类</h2>
+  <p class="meta">UCF 数据挖掘方法 II · 两人小组</p>
+  <p class="finding">准确率 75.9% 的模型，只找出了 23% 的胶质瘤病例。分类别看的结果和整体分数完全是两回事。</p>
+  <ul class="points">
+    <li><b>方法。</b>对 3,264 张四类 MRI 图像的像素特征做 F 检验筛选和 PCA 降维，再比较九个模型，从正则化回归、树集成到 CNN。</li>
+  </ul>
+</section>
+
+</main>
+<footer><div class="wrap"><span>© 2026 相宗佑 Zongyou (Fred) Xiang</span><span><a href="https://github.com/xiangzongyou">GitHub</a> · zx1554@nyu.edu</span></div></footer>
+<script src="../assets/spectro.js"></script>
+<script src="../assets/media.js"></script>
+</body>
+</html>
