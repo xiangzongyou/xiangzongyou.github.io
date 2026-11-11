@@ -68,8 +68,8 @@
 <section class="project" id="beethoven">
   <span class="label">Study 2 · Symbolic music</span>
   <h2 style="margin-top:8px">Testing a Beethoven Classifier on Recombined Imitations</h2>
-  <p class="meta">Reproduction and extension of Galajda &amp; Hua (IEEE MIPR 2024) · 2026 · MAESTRO v3 · PyTorch</p>
-  <p class="lede study-intro">AI systems can imitate a composer by splicing fragments of the composer’s own works. Using Beethoven as a case study, this study reproduces a published Beethoven classifier (Galajda &amp; Hua, 2024) on the MAESTRO piano dataset, tests it on imitations spliced from real bars of different works, and trains a detector based solely on bar-to-bar transitions.</p>
+  <p class="meta">Reproduction and extension of Galajda &amp; Hua (IEEE MIPR 2024) · 2026 · MAESTRO v3 · ASAP · PyTorch</p>
+  <p class="lede study-intro">AI systems can imitate a composer by splicing fragments of the composer’s own works. Using Beethoven as a case study, this study reproduces a published Beethoven classifier (Galajda &amp; Hua, 2024) on the MAESTRO piano dataset, tests it on imitations spliced from real bars of different works, and trains a detector based solely on bar-to-bar transitions. To check that the results do not depend on cutting performances into 2-second windows, both tests were then repeated on score MIDI files with real barlines (ASAP).</p>
   <div class="stats">
     <div class="stat"><b>0.96</b><span>AUC of the reproduced classifier, stable under stricter data splits</span></div>
     <div class="stat"><b>83–92%</b><span>Spliced imitations classified as Beethoven (originals: 83%)</span></div>
@@ -113,10 +113,12 @@
   </figure>
   <ul class="points">
     <li><b>Reproduction.</b> Two-layer GRU on 27 features per 2-second bar, following Galajda &amp; Hua (2024). AUC remains 0.96 under work- and year-based splits.</li>
-    <li><b>Splicing test.</b> Cross-work splicing does not lower the score; splicing other composers’ music raises its Beethoven rate from 8% to 25%.</li>
+    <li><b>Splicing test.</b> Cross-work splicing does not lower the score, which means the classifier judges each bar rather than whether the bars belong together. A rise for other composers’ music (8% to 25%) appeared only on MAESTRO and did not hold on score MIDI files.</li>
     <li><b>Transition features.</b> Focus on bar boundaries: key change, melodic leap, density shift, interrupted sustain. These features reliably identify spliced segments.</li>
-    <li><b>Generalization gap.</b> Trained on random splices only, the detector falls to AUC 0.73 on selected smooth splices; trained the other way, to 0.56. Selected splices are overly smooth: mean melodic leap of 1.6 semitones versus 9.1 in Beethoven.</li>
+    <li><b>Generalization gap.</b> Trained on random splices only, the detector falls to AUC 0.73 on selected smooth splices; trained the other way, to 0.56. Selected splices are overly smooth: mean melodic leap of 1.6 semitones versus 9.1 in Beethoven. On score MIDI files this smoothness is weaker (6.0 vs. 8.7 semitones), but it heads in the same direction.</li>
   </ul>
+  <h3 style="margin:30px 0 8px;font-size:1.15rem">Real barlines</h3>
+  <p>On score MIDI files with annotated barlines, the transition detector reaches AUC 0.82–0.91 with pitch features only, close to the 2-second results, and the retrained classifier still labels 80–86% of spliced segments as Beethoven (originals: 70%).</p>
   <div class="repo-links"><a href="https://github.com/xiangzongyou/beethoven-recombination-detection">Code and full results →</a></div>
 </section>
 

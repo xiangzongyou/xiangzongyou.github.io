@@ -68,8 +68,8 @@
 <section class="project" id="beethoven">
   <span class="label">研究二 · 乐谱</span>
   <h2 style="margin-top:8px">拼接仿作与贝多芬风格识别</h2>
-  <p class="meta">复现并拓展 Galajda &amp; Hua（IEEE MIPR 2024）· 2026 · MAESTRO · PyTorch</p>
-  <p class="lede study-intro">AI 可通过拼接作曲家原作片段来模仿其风格。此研究以贝多芬为例：先在 MAESTRO 钢琴数据集上复现已发表的贝多芬分类器（Galajda &amp; Hua, 2024），再以不同作品的真实小节构造拼接仿作，测试分类器能否识别；最后训练一个仅依据小节衔接特征的检测器。</p>
+  <p class="meta">复现并拓展 Galajda &amp; Hua（IEEE MIPR 2024）· 2026 · MAESTRO · ASAP · PyTorch</p>
+  <p class="lede study-intro">AI 可通过拼接作曲家原作片段来模仿其风格。此研究以贝多芬为例：先在 MAESTRO 钢琴数据集上复现已发表的贝多芬分类器（Galajda &amp; Hua, 2024），再以不同作品的真实小节构造拼接仿作，测试分类器能否识别；最后训练一个仅依据小节衔接特征的检测器。为了排除 2 秒分段的影响，又使用带有真实小节线的 MIDI 数据复核了实验。</p>
   <div class="stats">
     <div class="stat"><b>0.96</b><span>复现分类器的 AUC，更严格的数据划分下依然稳定</span></div>
     <div class="stat"><b>83–92%</b><span>拼接仿作被判为贝多芬的比例（原作 83%）</span></div>
@@ -113,10 +113,12 @@
   </figure>
   <ul class="points">
     <li><b>复现。</b>沿用 Galajda &amp; Hua（2024）方法：两层 GRU，每 2 秒提取 27 个音乐特征。按作品或录音年份划分数据，AUC 仍为 0.96。</li>
-    <li><b>拼接测试。</b>跨作品拼接并未降低得分；其他作曲家的作品经拼接后，被判为贝多芬的比例由 8% 升至 25%。</li>
+    <li><b>拼接测试。</b>跨作品拼接并未降低得分，说明分类器只判断单个小节是否像贝多芬，而非小节之间是否连贯。其他作曲家作品经拼接后比例上升（8% 至 25%），仅见于 MAESTRO，在乐谱 MIDI 上未能复现。</li>
     <li><b>衔接特征。</b>聚焦相邻小节交界处：调性变化、旋律跳进、音符密度突变、延音中断，据此可有效识别拼接片段。</li>
-    <li><b>泛化问题。</b>仅以随机拼接训练的检测器，面对筛选后的平滑拼接，AUC 降至 0.73；反向训练则降至 0.56。平滑拼接反而过度平滑：平均旋律跳进 1.6 个半音，原作为 9.1。</li>
+    <li><b>泛化问题。</b>仅以随机拼接训练的检测器，面对筛选后的平滑拼接，AUC 降至 0.73；反向训练则降至 0.56。平滑拼接反而过度平滑：平均旋律跳进 1.6 个半音，原作为 9.1。在乐谱 MIDI 上，过度平滑减弱了一些，拼接处平均跳进 6.0 个半音，原作为 8.7，但趋势不变。</li>
   </ul>
+  <h3 style="margin:30px 0 8px;font-size:1.15rem">真实小节线复核</h3>
+  <p>以带标注小节线的乐谱 MIDI 重复实验：仅用音高特征，衔接检测器 AUC 为 0.82–0.91，与 2 秒分段结果相近；重新训练的分类器仍将 80–86% 的拼接片段判为贝多芬（原作 70%）。</p>
   <div class="repo-links"><a href="https://github.com/xiangzongyou/beethoven-recombination-detection">代码与完整结果（英文）→</a></div>
 </section>
 
