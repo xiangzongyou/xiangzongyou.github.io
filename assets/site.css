@@ -279,3 +279,17 @@ html[lang="zh-CN"] .label, html[lang="zh-CN"] .role-tag { letter-spacing: .06em;
 .email-line .email-label { font: 500 .74rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .email-line a { color: var(--ink); text-decoration-color: var(--accent); }
 .email-line a:hover { color: var(--accent); }
+
+/* ---------- volume control (music page) ---------- */
+.vol { display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin: 0 0 10px; color: var(--muted); }
+.vol-btn { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: inherit; cursor: pointer; }
+.vol-btn:hover, .vol-btn:focus-visible { color: var(--accent); }
+.vol-btn svg { width: 20px; height: 20px; }
+.vol .vol-x { display: none; }
+.vol.is-muted .vol-x { display: inline; }
+.vol.is-muted .vol-wave { display: none; }
+.vol input[type=range] { -webkit-appearance: none; appearance: none; width: 120px; height: 4px; border-radius: 2px; cursor: pointer;
+  background: linear-gradient(to right, var(--accent) var(--fill, 80%), var(--line) var(--fill, 80%)); }
+.vol input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 0; }
+.vol input[type=range]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 0; }
+.vol input[type=range]:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
